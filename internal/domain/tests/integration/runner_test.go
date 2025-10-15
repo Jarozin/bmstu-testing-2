@@ -14,7 +14,7 @@ import (
 func TestRunner(t *testing.T) {
 	t.Parallel()
 
-	dbMeta, err := dbhelpers.CreateDatabase(context.Background(), filepath.Join("..", "..", "..", "..", "database", "docker-entrypoint-initdb.d", "01-init.sql"))
+	dbMeta, err := dbhelpers.CreateDatabase(context.Background(), filepath.Join("..", "..", "..", "..", "..", "database", "docker-entrypoint-initdb.d", "01-init.sql"))
 	if err != nil {
 		t.Fatalf("an error '%s' was not expected when opening a test database connection", err)
 	}
