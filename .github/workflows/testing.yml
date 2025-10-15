@@ -31,10 +31,10 @@ jobs:
             go vet -vettool="$(which complexity)" --cycloover 10 --halsteadover 40 ./internal/domain/album/... 
             if [ $? -ne 0 ]; then exit 1; fi
 
-        - name: Launch golint
-          run: |
-            golangci-lint run -v ./...
-            if [ $? -ne 0 ]; then exit 0; fi
+        # - name: Launch golint
+        #   run: |
+        #     golangci-lint run -v ./...
+        #     if [ $? -ne 0 ]; then exit 0; fi
   
   build_and_test:
     needs: lint

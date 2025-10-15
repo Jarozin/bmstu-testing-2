@@ -2,7 +2,7 @@ linters:
   disable-all: true
   enable:
     - staticcheck
-    # - gocyclo
+    - gocyclo
 run:
   timeout: 2m
 output:
