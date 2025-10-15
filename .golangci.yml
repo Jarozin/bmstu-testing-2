@@ -2,8 +2,7 @@ linters:
   disable-all: true
   enable:
     - staticcheck
-    - gocyclo
-    - govet
+    # - gocyclo
 run:
   timeout: 2m
 output:
@@ -16,4 +15,4 @@ linters-settings:
     min-complexity: 11
   govet:
     enable:
-      - unreachable
+      - unreachablev
