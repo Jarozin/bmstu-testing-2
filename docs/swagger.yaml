@@ -1,0 +1,244 @@
+basePath: /
+definitions:
+  dto.Album:
+    properties:
+      cover_file:
+        items:
+          type: integer
+        type: array
+      id:
+        type: integer
+      name:
+        type: string
+      type:
+        type: string
+    type: object
+  dto.TrackMeta:
+    properties:
+      genre:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+    type: object
+  dto.TrackObjectWithSource:
+    properties:
+      genre:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      payload:
+        items:
+          type: integer
+        type: array
+      source:
+        type: string
+    type: object
+  dto.TracksMetaCollection:
+    properties:
+      tracks:
+        items:
+          $ref: '#/definitions/dto.TrackMeta'
+        type: array
+    type: object
+  response.Response:
+    properties:
+      error:
+        type: string
+      status:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: API Server for musical service
+  title: Muzyaka API
+  version: "1.0"
+paths:
+  /api/album/{id}:
+    get:
+      consumes:
+      - application/json
+      description: get album by ID
+      operationId: get-album
+      parameters:
+      - description: album ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.Album'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.Response'
+        "405":
+          description: Method Not Allowed
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: GetAlbum
+      tags:
+      - album
+  /api/album/{id}/tracks:
+    get:
+      consumes:
+      - application/json
+      description: get all tracks from album
+      operationId: get-all-tracks-from-album
+      parameters:
+      - description: album ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.TracksMetaCollection'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.Response'
+        "405":
+          description: Method Not Allowed
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: GetAllTracks
+      tags:
+      - album
+  /api/track:
+    get:
+      consumes:
+      - application/json
+      description: find tracks
+      operationId: find-tracks
+      parameters:
+      - description: name search by q
+        in: query
+        name: q
+        required: true
+        type: string
+      - description: number of page from 1
+        in: query
+        name: page
+        required: true
+        type: integer
+      - description: size of page
+        in: query
+        name: page_size
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.TracksMetaCollection'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: FindTracks
+      tags:
+      - track
+  /api/track/{id}:
+    get:
+      consumes:
+      - application/json
+      description: get track by ID
+      operationId: get-track
+      parameters:
+      - description: track ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.TrackObjectWithSource'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.Response'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/response.Response'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.Response'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/response.Response'
+      security:
+      - ApiKeyAuth: []
+      summary: GetTrack
+      tags:
+      - track
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
