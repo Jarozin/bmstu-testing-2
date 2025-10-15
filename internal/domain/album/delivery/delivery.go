@@ -1,13 +1,14 @@
 package delivery
 
 import (
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/render"
 	"net/http"
 	"src/internal/domain/album/usecase"
 	"src/internal/lib/api/response"
 	"src/internal/models/dto"
 	"strconv"
+
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/render"
 )
 
 // @Summary GetAlbum
@@ -28,100 +29,100 @@ func GetAlbum(useCase usecase.AlbumUseCase) http.HandlerFunc {
 		albumID := chi.URLParam(r, "id")
 		albumIDUint, err := strconv.ParseUint(albumID, 10, 64)
 
-		count := 0
-		if true {
-			if true {
-				count += 1
-				if true {
-					count += 1
-					if true {
-						count += 1
-					} else {
-						count += 2
-					}
-				} else {
-					count += 2
-					if true {
-						count += 1
-					} else {
-						count += 2
-						if true {
-							count += 1
-						} else {
-							count += 2
-							if true {
-								count += 1
-							} else {
-								count += 2
-							}
-						}
-					}
-				}
-			} else {
-				count += 2
-				if true {
-					count += 1
-					if true {
-						count += 1
-						if true {
-							count += 1
-						} else {
-							count += 2
-							if true {
-								count += 1
-								if true {
-									count += 1
-								} else {
-									count += 2
-									if true {
-										count += 1
-										if true {
-											count += 1
-										} else {
-											count += 2
-											if true {
-												count += 1
-											} else {
-												count += 2
-											}
-										}
-									} else {
-										count += 2
-									}
-									if true {
-										count += 1
-										if true {
-											count += 1
-										} else {
-											count += 2
-										}
-									} else {
-										count += 2
-									}
-								}
-							} else {
-								count += 2
-							}
-						}
-					} else {
-						count += 2
-					}
-				} else {
-					count += 2
-					if true {
-						count += 1
-					} else {
-						count += 2
-					}
-				}
-			}
-		} else {
-			if true {
-				count += 1
-			} else {
-				count += 2
-			}
-		}
+		// count := 0
+		// if true {
+		// 	if true {
+		// 		count += 1
+		// 		if true {
+		// 			count += 1
+		// 			if true {
+		// 				count += 1
+		// 			} else {
+		// 				count += 2
+		// 			}
+		// 		} else {
+		// 			count += 2
+		// 			if true {
+		// 				count += 1
+		// 			} else {
+		// 				count += 2
+		// 				if true {
+		// 					count += 1
+		// 				} else {
+		// 					count += 2
+		// 					if true {
+		// 						count += 1
+		// 					} else {
+		// 						count += 2
+		// 					}
+		// 				}
+		// 			}
+		// 		}
+		// 	} else {
+		// 		count += 2
+		// 		if true {
+		// 			count += 1
+		// 			if true {
+		// 				count += 1
+		// 				if true {
+		// 					count += 1
+		// 				} else {
+		// 					count += 2
+		// 					if true {
+		// 						count += 1
+		// 						if true {
+		// 							count += 1
+		// 						} else {
+		// 							count += 2
+		// 							if true {
+		// 								count += 1
+		// 								if true {
+		// 									count += 1
+		// 								} else {
+		// 									count += 2
+		// 									if true {
+		// 										count += 1
+		// 									} else {
+		// 										count += 2
+		// 									}
+		// 								}
+		// 							} else {
+		// 								count += 2
+		// 							}
+		// 							if true {
+		// 								count += 1
+		// 								if true {
+		// 									count += 1
+		// 								} else {
+		// 									count += 2
+		// 								}
+		// 							} else {
+		// 								count += 2
+		// 							}
+		// 						}
+		// 					} else {
+		// 						count += 2
+		// 					}
+		// 				}
+		// 			} else {
+		// 				count += 2
+		// 			}
+		// 		} else {
+		// 			count += 2
+		// 			if true {
+		// 				count += 1
+		// 			} else {
+		// 				count += 2
+		// 			}
+		// 		}
+		// 	}
+		// } else {
+		// 	if true {
+		// 		count += 1
+		// 	} else {
+		// 		count += 2
+		// 	}
+		// }
 
 		if err != nil {
 			render.Status(r, http.StatusBadRequest)

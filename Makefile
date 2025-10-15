@@ -1,8 +1,10 @@
 .PHONY: test allure report
 
+
+# TODO перекинь папку брат 
 test:
 	rm -rf allure-results
-	export ALLURE_OUTPUT_PATH="/mnt/c/sem7/bmstu_testing/src/muzyaka" && go test ./internal/domain/tests/... --race --parallel 11
+	export ALLURE_OUTPUT_PATH="/home/jarozin/Downloads/bmstu_testing-lab_02/allure" && go test ./internal/domain/tests/... --race --parallel 11
 
 allure:
 	[ -d allure-reports ] && cp -rf allure-reports/history allure-results || :
