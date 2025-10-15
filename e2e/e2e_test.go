@@ -17,8 +17,6 @@ type E2ESuite struct {
 	client *http.Client
 }
 
-//TODO: возможно нужно будет разбить на шаги Asset Act Assert
-
 func (s *E2ESuite) Test_SearchTrack(t provider.T) {
 	t.Title("[SearchTrack (e2e)] Success")
 	t.Tags("track, e2e, SearchTrack")
