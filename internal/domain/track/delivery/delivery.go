@@ -1,5 +1,3 @@
-//nolint:all
-
 package delivery
 
 import (
