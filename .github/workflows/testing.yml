@@ -23,7 +23,7 @@ jobs:
         - name: Install golintIn and go vet
           run: |
             go install github.com/rauzh/go-complexity-analysis/cmd/complexity@9a7cad4
-            go install github.com/golangci/golangci-lint/cmd/golangci-lint@v2.5.0
+            go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
 
         - name: Launch govet
