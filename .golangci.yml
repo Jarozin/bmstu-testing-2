@@ -1,19 +1,35 @@
-linters:
-  disable-all: true
-  enable:
-    - staticcheck
-    - gocyclo
-    - govet
-run:
-  timeout: 2m
+version: "2"
 output:
   formats:
-    - format: json
+    json:
       path: report.json
-
-linters-settings:
-  gocyclo:
-    min-complexity: 11
-  govet:
-    enable:
-      - unreachable
+linters:
+  default: none
+  enable:
+    - gocyclo
+    - govet
+    - staticcheck
+  settings:
+    gocyclo:
+      min-complexity: 11
+    govet:
+      enable:
+        - unreachable
+  exclusions:
+    generated: lax
+    presets:
+      - comments
+      - common-false-positives
+      - legacy
+      - std-error-handling
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
+formatters:
+  exclusions:
+    generated: lax
+    paths:
+      - third_party$
+      - builtin$
+      - examples$
