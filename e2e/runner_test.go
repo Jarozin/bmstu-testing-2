@@ -2,19 +2,20 @@ package e2e
 
 import (
 	"context"
-	"github.com/ozontech/allure-go/pkg/framework/runner"
-	"github.com/ozontech/allure-go/pkg/framework/suite"
 	"net/http"
 	"path/filepath"
 	"src/cmd/muzyaka"
 	dbhelpers "src/internal/lib/testing/db"
 	"sync"
 	"testing"
+
+	"github.com/ozontech/allure-go/pkg/framework/runner"
+	"github.com/ozontech/allure-go/pkg/framework/suite"
 )
 
 func TestRunner(t *testing.T) {
 	t.Parallel()
-	dbMeta, err := dbhelpers.CreateDatabase(context.Background(), filepath.Join("..", "..", "database", "docker-entrypoint-initdb.d", "01-init.sql"))
+	dbMeta, err := dbhelpers.CreateDatabase(context.Background(), filepath.Join("..", "database", "docker-entrypoint-initdb.d", "01-init.sql"))
 	if err != nil {
 		t.Fatalf("an error '%s' was not expected when opening a test database connection", err)
 	}
