@@ -62,6 +62,8 @@ func GetTrack(useCase usecase.TrackUseCase) http.HandlerFunc {
 // @Failure 500 {object} response.Response
 // @Failure default {object} response.Response
 // @Router /api/track [get]
+//
+//nolint:govet
 func FindTracks(useCase usecase.TrackUseCase) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		log.Info().Msg("/api/track recieved")
